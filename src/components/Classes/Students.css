@@ -1,0 +1,12 @@
+Students_div{
+    display: flex;
+}
+
+Student_list{
+    display: flex;
+    
+}
+Student_link{
+    display: flex;
+    flex-direction: column;
+}

@@ -1,0 +1,1 @@
+SELECT * FROM checkboxes WHERE student_ck = $1;

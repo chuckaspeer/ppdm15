@@ -1,0 +1,10 @@
+.Home_Screen_links {
+  display: flex;
+}
+.HSlinks {
+  display: flex;
+  align-items: center;
+  margin-right: 50px;
+  text-decoration: none;
+  color: black;
+}
