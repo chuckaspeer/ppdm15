@@ -6,9 +6,21 @@ import { connect } from "react-redux";
 import { updateStudents } from "../../ducks/reducer";
 
 class Students extends Component {
+  constructor() {
+    super();
+    this.state = {
+      className: ""
+    };
+  }
   componentDidMount() {
     const { updateStudents } = this.props;
     updateStudents(this.props.match.params.id);
+
+    let arr = this.props.classes.filter(element => {
+      return element.id === this.props.match.params.id;
+    });
+
+    if (arr[0]) this.setState({ className: arr[0].class_name });
     // axios
     //   .get(`/api/classes/${this.props.match.params.id}/students`)
     //   .then(response => {
@@ -17,7 +29,6 @@ class Students extends Component {
     //   });
   }
   render() {
-
     let studentDisplay = this.props.students.map(students => {
       return (
         <Link key={students.id} to={`/Ics/${students.id}`} className="links">
@@ -31,6 +42,7 @@ class Students extends Component {
     return (
       <div className="Students_div">
         <h1>Students</h1>
+        <h5>{this.state.className} </h5>
         {studentDisplay}
       </div>
     );
@@ -38,10 +50,11 @@ class Students extends Component {
 }
 
 function mapStateToProps(state) {
-  const { students } = state;
+  const { students, classes } = state;
 
   return {
-    students
+    students,
+    classes
   };
 }
 

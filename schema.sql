@@ -32,5 +32,13 @@ CREATE TABLE checkboxs (
     staff_id INTEGER REFERENCES students(id)
 )
 
+CREATE TABLE doc_checks (
+	id SERIAL PRIMARY KEY,
+	 checks text [],
+    staff_id INTEGER REFERENCES staff(id),
+	student_id INTEGER REFERENCES students(id)
+
+)
+
 ALTER TABLE students 
 ADD student_ck INTEGER NULL;

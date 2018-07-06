@@ -1,16 +1,22 @@
 import axios from "axios";
+import checkboxes from "../utils/checkboxes";
+
 const initialState = {
   classes: [],
   students: [],
-  comments: "",
-  checkedItems: "false",
-
+  checkedItems: checkboxes,
+  isChecked: "false",
+  ReportItems: [{}],
+  studentReports: []
 };
 
 const CLASSES = "CLASSES";
 const STUDENTS = "STUDENTS";
-const COMMENTS = "COMMENTS";
 const ISCHECKED = "ISCHECKED";
+const CHECKEDITEMS = "CHECKEDITEMS";
+const REPORTITEMS = "REPORTITEMS";
+const ADDDOCSTODB = "ADDDOCSTODB";
+const STUDENTREPORTS = "STUDENTREPORTS";
 
 function reducer(state = initialState, action) {
   //console.log("REDUCER HIT: Action ->", action);
@@ -22,11 +28,17 @@ function reducer(state = initialState, action) {
     case `${STUDENTS}_FULFILLED`:
       return Object.assign({}, state, { students: action.payload.data });
 
-    case COMMENTS:
-      return Object.assign({}, state, { comments: action.payload.data });
-
     case ISCHECKED:
       return Object.assign({}, state, { isChecked: action.payload });
+
+    case CHECKEDITEMS:
+      return Object.assign({}, state, { checkedItems: action.payload.data });
+
+    case REPORTITEMS:
+      return Object.assign({}, state, { isChecked: action.payload });
+
+    case `${STUDENTREPORTS}_FULFILLED`:
+      return Object.assign({}, state, { studentReports: action.payload.data });
     default:
       return state;
   }
@@ -43,19 +55,38 @@ export function updateStudents(id) {
   return {
     type: STUDENTS,
     payload: axios.get(`/api/classes/${id}/students`)
-    
   };
 }
-export function updateComments(comments) {
-  return {
-    type: COMMENTS,
-    payload: ""
-  };
-}
-export function updateIschecked(isChecked) {
+
+export function updateIsChecked(isChecked) {
   return {
     type: ISCHECKED,
     payload: ""
+  };
+}
+export function updateCheckedItems(checkedItems) {
+  return {
+    type: CHECKEDITEMS,
+    payload: []
+  };
+}
+export function updateReportItems(reportItems) {
+  return {
+    type: REPORTITEMS,
+    payload: [{}]
+  };
+}
+
+export function addDocsToDb(docs) {
+  return {
+    type: ADDDOCSTODB,
+    payload: axios.post("/api/doc_comments", docs)
+  };
+}
+export function updateStudentReports(id) {
+  return {
+    type: STUDENTREPORTS,
+    payload: axios.get(`/api/reports/${id}`)
   };
 }
 

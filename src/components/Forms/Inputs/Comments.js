@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import "./Comments.css";
-import { connect } from "react-redux";
-import { updateComments } from "../../../ducks/reducer";
 class Comments extends Component {
-  // const {updateComment} = this.props;
-  // updateComment();
+  state = {
+    comment: ""
+  };
 
-  handleChange(value) {
-    this.setProps({ comment: value });
-  }
+  onChangeHandler = e => {
+    this.props.typed(e.target.value);
+    this.setState({ comment: e.target.value });
+  };
 
   render() {
     return (
@@ -16,22 +16,11 @@ class Comments extends Component {
         Comment:
         <input
           className="comment"
-          onChange={e => this.handleChange(e.target.value)}
+          onChange={this.onChangeHandler}
           type="text"
         />
       </div>
     );
   }
 }
-function mapStateToProps(state) {
-  const { comments } = state;
-
-  return {
-    comments
-  };
-}
-
-export default connect(
-  mapStateToProps,
-  { updateComments }
-)(Comments);
+export default Comments;

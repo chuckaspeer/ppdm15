@@ -22,7 +22,7 @@ app.use(
 );
 
 //app.use(checkForSession);
-app.use(express.static(`__dirname/../build`));
+// app.use(express.static(`__dirname/../build`));
 
 //needed on if you have a build folder
 
@@ -53,13 +53,48 @@ app.get("/api/classes", (req, res) => {
     .then(response => res.status(200).json(response));
 });
 
-
-app.post("api/doc_comments", (req, body)=>{
-  app.post ('db')
-  .addCommentByStudent()
-  .then(response => res.status(200).json(response))
+app.get("/api/reports/:studentid", (req, res) => {
+  console.log(req.params);
+  req.app
+    .get("db")
+    // .classes.find({})
+    .getReportsByStudentId([req.params.studentid])
+    .then(response => res.status(200).json(response));
 });
 
+app.get("/api/checkboxes", (req, res) => {
+  app
+    .get("db")
+    .checkboxes.find({})
+    //.getClassesByStaffId([1])
+    .then(response => res.status(200).json(response));
+});
+
+app.post("/api/students/:id/doc_comments", (req, res) => {
+  const { docs } = req.body;
+  const { id } = req.params;
+
+  let arr = [];
+  docs.checkboxes.forEach((element, index) => {
+    arr.push(element.label);
+  });
+
+  req.app
+    .get("db")
+    .addCommentByStudent([arr, docs.comment, id, 1])
+    .then(response => res.status(200).json(response))
+    .catch(err => console.log(err));
+});
+// app.post("/api/students/:id/doc_checks", (req, res) => {
+//   const { checks } = req.body;
+//   const { id } = req.params;
+//   console.log({ checks, id });
+//   req.app
+//     .get("db")
+//     .addCommentByStudent([checks, id, ])
+//     .then(response => res.status(200).json(response))
+//     .catch(err => console.log(err));
+// });
 
 //add app. get, post, puts and deletes here;
 

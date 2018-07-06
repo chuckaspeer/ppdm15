@@ -1,21 +1,20 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 class Checkbox extends Component {
   state = {
-    isChecked: false,
-  }
+    isChecked: false
+  };
 
   toggleCheckboxChange = () => {
     const { handleCheckboxChange, label } = this.props;
 
-    this.setState(({ isChecked }) => (
-      {
-        isChecked: !isChecked,
-      }
-    ));
-
-    handleCheckboxChange(label);
-  }
+    this.setState(
+      ({ isChecked }) => ({
+        isChecked: !isChecked
+      }),
+      () => handleCheckboxChange(label, this.state.isChecked)
+    );
+  };
 
   render() {
     const { label } = this.props;
@@ -25,19 +24,15 @@ class Checkbox extends Component {
       <div className="checkbox">
         <label>
           <input
-                            type="checkbox"
-                            value={label}
-                            checked={isChecked}
-                            onChange={this.toggleCheckboxChange}
-                            
-                        />
+            type="checkbox"
+            value={label}
+            checked={isChecked}
+            onChange={this.toggleCheckboxChange}
+          />
 
           {label}
         </label>
-        
-        
       </div>
-
     );
   }
 }
