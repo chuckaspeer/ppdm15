@@ -1,0 +1,16 @@
+.Mainreportdiv {
+  position: relative;
+  border: solid 1px;
+  margin: 20px;
+}
+
+.edit_delete {
+  display: flex;
+  position: absolute;
+  justify-content: space-between;
+  margin: 0px;
+  right: 0;
+}
+span{
+  font-weight: bold;
+}

@@ -3,7 +3,9 @@ import Checkbox from "../Forms/Checkbox";
 import Comments from "../Forms/Inputs/Comments";
 import { connect } from "react-redux";
 import { updateCheckedItems } from "../../ducks/reducer";
+import { Link } from "react-router-dom";
 import axios from "axios";
+import './Ics.css';
 
 class Ics extends Component {
   state = {
@@ -17,7 +19,7 @@ class Ics extends Component {
 
   componentDidMount() {
     let arr = this.props.students.filter(element => {
-      return element.id == this.props.match.params.id;
+      return element.id === this.props.match.params.id;
     });
 
     console.log(arr);
@@ -66,7 +68,7 @@ class Ics extends Component {
   };
 
   createCheckbox = label => (
-    <Checkbox
+    <Checkbox 
       label={label}
       handleCheckboxChange={this.toggleCheckbox}
       key={label}
@@ -87,13 +89,17 @@ class Ics extends Component {
           <div className="col-sm-12">
             <h1> In Class Support</h1>
             <h4>{this.state.studentName}</h4>
-            <form onSubmit={this.handleFormSubmit}>
+            <form onSubmit={this.handleFormSubmit} className ="checkboxes">
               {this.createCheckboxes()}
               <Comments typed={this.onChangeHandler} />
-
               <button className="btn btn-default" type="submit">
                 Submit
               </button>
+              <Link to="/Classes" className="HSlinks">
+                <button className="back btn" type="back">
+                  Back
+                </button>
+              </Link>
             </form>
           </div>
         </div>

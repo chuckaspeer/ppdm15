@@ -2,6 +2,8 @@ require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const session = require("express-session");
+const passport = require("passport");
+const Auth0Strategy = require("passport-auth0");
 //const checkForSession = require('./middlewares/checkForSession');
 //const controller = require("./controllers/controller");
 const cors = require("cors");
@@ -17,9 +19,58 @@ app.use(
   session({
     secret: process.env.SESSION_SECRET,
     resave: false,
-    saveUninitialized: true
+    saveUninitialized: false,
+    cookie: {
+      maxAge: 1000000
+    }
   })
 );
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.use(
+  new Auth0Strategy(
+    {
+      domain: process.env.DOMAIN,
+      clientID: process.env.CLIENT_ID,
+      clientSecret: process.env.CLIENT_SECRET,
+      callbackURL: "/Login",
+      scope: "openid email profile"
+    },
+    function(accessToken, refreshToken, extraParams, profile, done) {
+      return done(null, profile);
+    }
+  )
+);
+passport.serializeUser((user, done) => {
+  return done(null, user);
+});
+passport.deserializeUser((user, done) => {
+  return done(null, user);
+});
+app.get(
+  "/login",
+  passport.authenticate("auth0", {
+    successRedirect: "/",
+    faluerRedirect: "/github",
+    failureFlash: true
+  })
+);
+
+function authenticated(req, res, next) {
+  if (req.user) {
+    next();
+  } else {
+    res.sendStatus(401);
+  }
+}
+app.get("/me", (req, res, next) => {
+  if (!req.user) {
+    res.status(500).json({ message: "BROKE" });
+  } else {
+    res.status(200).send(students);
+  }
+});
 
 //app.use(checkForSession);
 // app.use(express.static(`__dirname/../build`));
@@ -78,13 +129,33 @@ app.post("/api/students/:id/doc_comments", (req, res) => {
   docs.checkboxes.forEach((element, index) => {
     arr.push(element.label);
   });
-
-  req.app
-    .get("db")
-    .addCommentByStudent([arr, docs.comment, id, 1])
-    .then(response => res.status(200).json(response))
+  const db = req.app.get("db");
+  db.addCommentByStudent([docs.comment, id, 1])
+    .then(response => {
+      const commentid = response[0].id;
+      db.addCheckByStudent([arr, id, 1])
+        .then(response => {
+          const checkid = response[0].id;
+          db.addReportByStudentId([checkid, commentid, id, 1])
+            .then(response => {
+              console.log(response);
+              res.status(200).json(response);
+            })
+            .catch(err => console.log(err));
+        })
+        .catch(err => console.log(err));
+    })
     .catch(err => console.log(err));
 });
+
+// app.put(req, res,) => {
+//   const { docs } = req.body;
+//   const { id } = req.params;
+// let arr = [];
+//   docs.checkboxes.forEach((element, index) => {
+//     arr.push(element.label);
+//   });
+
 // app.post("/api/students/:id/doc_checks", (req, res) => {
 //   const { checks } = req.body;
 //   const { id } = req.params;
@@ -98,7 +169,7 @@ app.post("/api/students/:id/doc_comments", (req, res) => {
 
 //add app. get, post, puts and deletes here;
 
-//nodapp.get("/api/classes", controller.getClasses);
+//app.get("/api/classes", controller.getClasses);
 // app.get("/api/staff", controller.getstaff);
 // app.get("/api/students", controller.getstudents);
 // //app.get("/api/student/:id", controller.getstudent);

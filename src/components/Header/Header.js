@@ -5,9 +5,10 @@ import { Link } from "react-router-dom";
 export default class Header extends Component {
   render() {
     return (
-      <div>
+      <div className="Mainheader">
         <nav>
-          <div>Doc Daily</div>
+          
+          <div className='doc'>Doc Daily</div>
           <div className="header_wrap">
             <Link to="/" className="links">
               Home Screen

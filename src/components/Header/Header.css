@@ -1,11 +1,25 @@
+.Mainheader{
+  font-size: 100%;
+  background-repeat: repeat-x;
+  padding: 0px;
+  margin: 0px;
+  
+}
+
+.doc{
+padding: 10px;
+}
 nav {
+  display: flex;
   background-color: rgb(54, 59, 122);
   color: white;
   height: 7.5vh;
-  display: flex;
+  
   justify-content: space-between;
   align-items: center;
   padding: 0 40px;
+
+ 
 }
 
 logo {
@@ -13,11 +27,10 @@ logo {
   letter-spacing: 2px;
   cursor: pointer;
 }
-.header-wrap {
-  display: flex;
-}
+
 
 .links {
+ display: inline-flex;
   align-items: center;
   margin-right: 50px;
   text-decoration: none;

@@ -42,3 +42,12 @@ CREATE TABLE doc_checks (
 
 ALTER TABLE students 
 ADD student_ck INTEGER NULL;
+
+
+CREATE TABLE reports (
+	id SERIAL PRIMARY KEY,
+	 doc_checks INTEGER REFERENCES doc_checks(id),
+	doc_comments INTEGER REFERENCES doc_comments(id),
+    students INTEGER REFERENCES students(id),
+    staff INTEGER REFERENCES staff(id)
+)

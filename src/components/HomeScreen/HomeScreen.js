@@ -1,41 +1,37 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import './HomeScreen.css'
+import "./HomeScreen.css";
 export default class HomeScreen extends Component {
-    render() {
+  render() {
+    return (
+      <div className="Mainhomescreen">
+        <h1>HomeScreen</h1>
+        <div className="Home_Screen_links">
+          {/* <Link to="/" className="HSlinks">
+            <button className="button">Home Screen</button>
+          </Link> */}
 
-        return (
-            <div>
-                <h1>HomeScreen</h1>
-                <div className="Home_Screen_links">
-                <button>
-            <Link to="/" className="HSlinks">
-              Home Screen
+          <Link to="/Classes" className="HSlinks">
+            <button className="button">Classes</button>
+          </Link>
+
+          
+            <Link to="/Services" className="HSlinks"><button className="button">
+              Services</button>
             </Link>
-            </button>
-            <button>
-            <Link to="/Classes" className="HSlinks">
-              Classes
+          
+          
+            <Link to="/Consults" className="HSlinks"><button className="button">
+              Consults          </button>
             </Link>
-            </button>
-            <button>
-            <Link to="/Services" className="HSlinks">
-              Services
+
+          
+            <Link to="/Reports" className="HSlinks"><button className="button">
+              Reports</button>
             </Link>
-            </button>
-            <button>
-            <Link to="/Consults" className="HSlinks">
-              Consults
-            </Link>
-            </button>
-            <button>
-            <Link to="/Reports" className="HSlinks">
-              Reports
-            </Link>
-            </button>
-          </div>
-          </div> 
-            
-        )
-    }
+          
+        </div>
+     </div>
+    );
+  }
 }
