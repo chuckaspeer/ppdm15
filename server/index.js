@@ -147,14 +147,34 @@ app.post("/api/students/:id/doc_comments", (req, res) => {
     })
     .catch(err => console.log(err));
 });
+app.put("/api/students/:id/doc_comments", (req, res) => {
+  const { docs } = req.body;
+  const { id } = req.params;
 
-// app.put(req, res,) => {
-//   const { docs } = req.body;
-//   const { id } = req.params;
-// let arr = [];
-//   docs.checkboxes.forEach((element, index) => {
-//     arr.push(element.label);
-//   });
+  let arr = [];
+  docs.checkboxes.forEach((element, index) => {
+    arr.push(element.label);
+  });
+//   const db = req.app.get("db");
+//   db.addCommentByStudent([docs.comment, id, 1])
+//     .then(response => {
+//       const commentid = response[0].id;
+//       db.addCheckByStudent([arr, id, 1])
+//         .then(response => {
+//           const checkid = response[0].id;
+//           db.addReportByStudentId([checkid, commentid, id, 1])
+//             .then(response => {
+//               console.log(response);
+//               res.status(200).json(response);
+//             })
+//             .catch(err => console.log(err));
+//         })
+//         .catch(err => console.log(err));
+//     })
+//     .catch(err => console.log(err));
+ });
+
+
 
 // app.post("/api/students/:id/doc_checks", (req, res) => {
 //   const { checks } = req.body;

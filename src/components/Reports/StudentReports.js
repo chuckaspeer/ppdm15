@@ -1,59 +1,56 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { updateStudentReports } from "../../ducks/reducer";
+import { updateStudentReports, updateStudentReport } from "../../ducks/reducer";
 import "./StudentReports.css";
-import axios from "axios";
+import  StudentReport from "./StudentReport/StudentReport";
+//import axios from "axios";
+
 class StudentReports extends Component {
   componentDidMount() {
-    
     this.props.updateStudentReports(this.props.match.params.id).then(() => {
       console.log(this.props.studentReports);
-      console.log(this.props.student)
+      // console.log(this.props.student);
     });
   }
-//   axios
-//   .put(`/api/students:id/${this.props.match.params.id}/doc_comments`, {
-//     docs
-//   })
-//   .then(response => []);
-// };
-  render() {
 
-    
+  // edithandler = edithandler => {
+  //   edithandler.preventDefault();
+  //   this.props.updateStudentReport(this.props.student.id);
+  // };
+
+  render() {
+    console.log(this.props);
+
     let reportsDisplay = this.props.studentReports[0] ? (
       this.props.studentReports.map(report => (
-        <div className='Mainreportdiv'>
-        <span>Student:</span>
-          <div className='StudentNameReport'>
-        
-          {report.first_name +
-            "  " +
-            report.last_name +
-            " " }
-            </div>
-            <br/>
-            <span>In Class Support:</span>
-            
-            <div className='StudentCheckReport'>{
-            report.checks}</div>
-            <br/>
-           <span>Comment:</span>
-          
-            <div className= 'StudentCommentReport'>{
-            report.comments}
-            </div> 
-            <br/>
-            <span>Reporting Staff:</span>
-            <div className='StaffReporter'>
-           
-            {report.staff_first_name + " " + report.staff_last_name}
-            </div>
-          
-            <div className = 'edit_delete'>
-            <button className="edit">edit</button>
-            <button className="delete">delete</button>
-            </div>
-        </div>
+
+        <StudentReport report={report} />
+        // <div key={0} className="Mainreportdiv">
+        //   <span>Student:</span>
+        //   <div className="StudentNameReport">
+        //     {report.first_name + "  " + report.last_name + " "}
+        //   </div>
+        //   <br />
+        //   <span>In Class Support:</span>
+
+        //   <div className="StudentCheckReport">{report.checks}</div>
+        //   <br />
+        //   <span>Comment:</span>
+
+        //   <div className="StudentCommentReport">{report.comments}</div>
+        //   <br />
+        //   <span>Reporting Staff:</span>
+        //   <div className="StaffReporter">
+        //     {report.staff_first_name + " " + report.staff_last_name}
+        //   </div>
+
+        //   <div className="edit_delete">
+        //     <button onClick={this.edithandler} className="edit">
+        //       edit
+        //     </button>
+        //     <button className="delete">delete</button>
+        //   </div>
+        // </div>
       ))
     ) : (
       <p>Loading...</p>
@@ -61,21 +58,22 @@ class StudentReports extends Component {
     return (
       <div>
         <h1>Student Report</h1>
-        
+
         {reportsDisplay}
       </div>
     );
   }
 }
 function mapStateToProps(state) {
-  const { studentReports } = state;
+  const { studentReports, studentReport } = state;
 
   return {
-    studentReports
+    studentReports,
+    studentReport
   };
 }
 
 export default connect(
   mapStateToProps,
-  { updateStudentReports }
+  { updateStudentReports, updateStudentReport }
 )(StudentReports);

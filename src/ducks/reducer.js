@@ -7,7 +7,8 @@ const initialState = {
   checkedItems: checkboxes,
   isChecked: "false",
   ReportItems: [{}],
-  studentReports: []
+  studentReports: [],
+  studentReport:[]
 };
 
 const CLASSES = "CLASSES";
@@ -17,6 +18,7 @@ const CHECKEDITEMS = "CHECKEDITEMS";
 const REPORTITEMS = "REPORTITEMS";
 const ADDDOCSTODB = "ADDDOCSTODB";
 const STUDENTREPORTS = "STUDENTREPORTS";
+const STUDENTREPORT = "STUDENTREPORT";
 
 function reducer(state = initialState, action) {
   //console.log("REDUCER HIT: Action ->", action);
@@ -39,7 +41,10 @@ function reducer(state = initialState, action) {
 
     case `${STUDENTREPORTS}_FULFILLED`:
       return Object.assign({}, state, { studentReports: action.payload.data });
-    default:
+    
+      case `${STUDENTREPORT}`:
+    return Object.assign({}, state, {studentReport: action.payload.data});
+      default:
       return state;
   }
 }
@@ -88,6 +93,12 @@ export function updateStudentReports(id) {
     type: STUDENTREPORTS,
     payload: axios.get(`/api/reports/${id}`)
   };
+}
+  export function updateStudentReport(id) {
+    return {
+      type: STUDENTREPORT,
+      payload: axios.put(`/api/reports/${id}`)
+    };
 }
 
 export default reducer;
