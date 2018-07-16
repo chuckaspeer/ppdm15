@@ -1,23 +1,21 @@
 import React, { Component } from "react";
 
-
 export default class StudentReport extends Component {
   state = {
     edit: false
-  }; 
+  };
 
-  edithandler = (event) => {
+  edithandler = event => {
     event.preventDefault();
     //this.props.updateStudentReport(this.props.student.id);
-    
+
     this.setState({
-        edit: !this.state.edit
-    })
-    console.log();
+      edit: !this.state.edit
+    });
   };
 
   render() {
-      const {edit} = this.state
+    const { edit } = this.state;
     const {
       first_name,
       last_name,
@@ -39,7 +37,13 @@ export default class StudentReport extends Component {
         <br />
         <span>Comment:</span>
 
-        <div className="StudentCommentReport">{comments}</div>
+        <div className="StudentCommentReport">
+          {edit ? (
+            <input onChange={e => this.handleChange(e.target.value)} />
+          ) : (
+            comments
+          )}
+        </div>
         <br />
         <span>Reporting Staff:</span>
         <div className="StaffReporter">
@@ -48,7 +52,7 @@ export default class StudentReport extends Component {
 
         <div className="edit_delete">
           <button onClick={this.edithandler} className="edit">
-            {edit === true ? "save":"edit"}
+            {edit ? "save comment" : "edit comment"}
           </button>
           <button className="delete">delete</button>
         </div>

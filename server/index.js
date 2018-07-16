@@ -152,13 +152,13 @@ app.put("/api/students/:id/doc_comments", (req, res) => {
   const { id } = req.params;
 
   let arr = [];
-  docs.checkboxes.forEach((element, index) => {
+  docs.comments.forEach((element, index) => {
     arr.push(element.label);
   });
-//   const db = req.app.get("db");
-//   db.addCommentByStudent([docs.comment, id, 1])
-//     .then(response => {
-//       const commentid = response[0].id;
+ const db = req.app.get("db");
+   db.addCommentByStudent([docs.comment, id, 1])
+     .then(response => {
+       const commentid = response[0].id;
 //       db.addCheckByStudent([arr, id, 1])
 //         .then(response => {
 //           const checkid = response[0].id;
@@ -166,7 +166,7 @@ app.put("/api/students/:id/doc_comments", (req, res) => {
 //             .then(response => {
 //               console.log(response);
 //               res.status(200).json(response);
-//             })
+             })
 //             .catch(err => console.log(err));
 //         })
 //         .catch(err => console.log(err));

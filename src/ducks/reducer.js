@@ -97,7 +97,7 @@ export function updateStudentReports(id) {
   export function updateStudentReport(id) {
     return {
       type: STUDENTREPORT,
-      payload: axios.put(`/api/reports/${id}`)
+      payload: axios.put(`/api/doc_comments/${id}`)
     };
 }
 
