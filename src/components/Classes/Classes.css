@@ -1,0 +1,14 @@
+p{
+    display: block;
+  padding: 1px;
+  margin: 5px auto;
+  width: 100%;
+
+  background-color: rgb(54, 59, 122);
+
+  font-size: 25px;
+  cursor: pointer;
+  text-align: center;
+  color: aliceblue;
+  align-items: center
+}

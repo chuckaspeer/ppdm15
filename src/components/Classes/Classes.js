@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import {connect} from 'react-redux';
 import {updateClasses} from '../../ducks/reducer';
+import './Classes.css';
 
 class Classes extends Component {
   
@@ -23,7 +24,7 @@ class Classes extends Component {
       return (
         <Link key={classes.id} to={`/Students/${classes.id}`} className="links">
           <button>
-            <p>{`${classes.class_name} ${classes.class_desc}`}</p>
+            <p>{` ${classes.class_desc}`}</p>
           </button>
         </Link>
       );

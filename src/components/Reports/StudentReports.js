@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { updateStudentReports, updateStudentReport } from "../../ducks/reducer";
 import "./StudentReports.css";
-import  StudentReport from "./StudentReport/StudentReport";
+import StudentReport from "./StudentReport/StudentReport";
 //import axios from "axios";
 
 class StudentReports extends Component {
@@ -23,8 +23,7 @@ class StudentReports extends Component {
 
     let reportsDisplay = this.props.studentReports[0] ? (
       this.props.studentReports.map(report => (
-
-        <StudentReport report={report} />
+        <StudentReport studentId={this.props.match.params.id} report={report} />
         // <div key={0} className="Mainreportdiv">
         //   <span>Student:</span>
         //   <div className="StudentNameReport">

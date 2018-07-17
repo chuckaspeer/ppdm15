@@ -5,7 +5,7 @@
 -- JOIN staff ON doc_checks.staff_id = staff.id
 -- WHERE students.id = $1;
 
-SELECT students.first_name, students.last_name, ch.checks, co.comments, staff.first_name as staff_first_name, staff.last_name as staff_last_name FROM reports re
+SELECT re.id AS report_id, co.id AS comment_id, students.first_name, students.last_name, ch.checks, co.comments, staff.first_name as staff_first_name, staff.last_name as staff_last_name FROM reports re
 JOIN doc_checks ch ON ch.id = re.doc_checks
 JOIN doc_comments co ON co.id = re.doc_comments
 JOIN students ON students.id = re.students

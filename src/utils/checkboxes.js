@@ -8,6 +8,7 @@ export default [
   "Chunk lesson into smaller parts...",
   "Preview new concepts/vocabulary...",
   "Repeats and Review...",
-  "Re-exaplain concept...",
+  "Re-explain concept...",
   "Oral administration of test/text..."
 ];
+ 

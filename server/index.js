@@ -147,34 +147,32 @@ app.post("/api/students/:id/doc_comments", (req, res) => {
     })
     .catch(err => console.log(err));
 });
+
 app.put("/api/students/:id/doc_comments", (req, res) => {
-  const { docs } = req.body;
+  console.log("hit");
+  const { comment } = req.body;
   const { id } = req.params;
 
-  let arr = [];
-  docs.comments.forEach((element, index) => {
-    arr.push(element.label);
+  const db = req.app.get("db");
+  db.updateReportByReportId([comment, id]).then(response => {
+    console.log(response);
+    res.status(200).json(response);
+    // commentid = response[0].id;
   });
- const db = req.app.get("db");
-   db.addCommentByStudent([docs.comment, id, 1])
-     .then(response => {
-       const commentid = response[0].id;
-//       db.addCheckByStudent([arr, id, 1])
-//         .then(response => {
-//           const checkid = response[0].id;
-//           db.addReportByStudentId([checkid, commentid, id, 1])
-//             .then(response => {
-//               console.log(response);
-//               res.status(200).json(response);
-             })
-//             .catch(err => console.log(err));
-//         })
-//         .catch(err => console.log(err));
-//     })
-//     .catch(err => console.log(err));
- });
+});
+/////////////////////////////DELETE/////////////////////////////////////////////////////////
+app.delete("/api/students/:id/reports", (req, res) => {
+  console.log("hit");
+  //const { comment } = req.body;
+  const { id } = req.params;
 
-
+  const db = req.app.get("db");
+  db.deleteReportByReportId([id]).then(response => {
+    console.log(response);
+    res.sendStatus(200);
+    // commentid = response[0].id;
+  });
+});
 
 // app.post("/api/students/:id/doc_checks", (req, res) => {
 //   const { checks } = req.body;

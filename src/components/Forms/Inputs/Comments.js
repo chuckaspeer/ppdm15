@@ -14,7 +14,7 @@ class Comments extends Component {
     return (
       <div className="input">
         Comment:
-        <input
+        <textarea
           className="comment"
           onChange={this.onChangeHandler}
           type="text"
