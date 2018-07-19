@@ -90,6 +90,15 @@ app.get("/api/classes/:id/students", (req, res) => {
     .then(response => res.status(200).json(response));
   //res.status(200).json({message :'Hell yeah'});
 });
+// app.get("/api/classes/:id/students", (req, res) => {
+//   app
+//     .get("db")
+//     .joinStudentByClasses([req.params.id])
+//     .then(response => res.status(200).json(response));
+//   //res.status(200).json({message :'Hell yeah'});
+// });
+
+
 app.get("/api/staff", (req, res) => {
   app
     .get("db")

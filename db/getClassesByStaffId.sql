@@ -1,1 +1,1 @@
-SELECT * FROM classes WHERE id = $1;
+SELECT * FROM classes WHERE staff_id = $1;

@@ -1,9 +1,13 @@
 .input {
     display: flex;
     padding: 20px;
+    font-weight: bold;
+
 
 }
 .comment {
+    display: flex;
     width: 350px;
-    height: 70px;
+    height: 70px; 
+    border: solid 1px;
 }

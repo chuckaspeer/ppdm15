@@ -51,3 +51,11 @@ CREATE TABLE reports (
     students INTEGER REFERENCES students(id),
     staff INTEGER REFERENCES staff(id)
 )
+
+CREATE TABLE students_classes (
+	class_id INTEGER REFERENCES classes(id),
+	student_id INTEGER REFERENCES students(id)
+)
+
+INSERT INTO students_classes (class_id, student_id)
+VALUES (1,1),(1,2),(1,3),(2,4),(2,5),(2,6),(3,7),(3,8),(3,9),(4,10),(4,11),(4,1),(4,2);

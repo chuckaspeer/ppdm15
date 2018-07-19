@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Checkbox from "../Forms/Checkbox";
 import Comments from "../Forms/Inputs/Comments";
 import { connect } from "react-redux";
-import { updateCheckedItems } from "../../ducks/reducer";
+import { updateCheckedItems, updateClasses } from "../../ducks/reducer";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import './Ics.css';
@@ -92,9 +92,11 @@ class Ics extends Component {
             <form onSubmit={this.handleFormSubmit} className ="checkboxes">
               {this.createCheckboxes()}
               <Comments typed={this.onChangeHandler} />
+              {/* <Link key={student} to={`/Students/${classes.id}`} className="submit"> */}
               <button className="submit_btn" type="submit">
                 Submit
               </button>
+              {/* </Link> */}
               <Link to="/Classes" className="HSlinks">
                 <button className="back_btn" type="back">
                   Back
@@ -109,15 +111,16 @@ class Ics extends Component {
 }
 
 function mapStateToProps(state) {
-  const { checkedItems, students } = state;
+  const { checkedItems, students, classes } = state;
 
   return {
     checkedItems,
-    students
+    students,
+    classes
   };
 }
 
 export default connect(
   mapStateToProps,
-  { updateCheckedItems }
+  { updateCheckedItems, updateClasses }
 )(Ics);

@@ -4,3 +4,10 @@
     font-size: 18px;
     border: solid .1px rgb(247, 245, 245);
 }
+
+@media(max-width:812px){
+    .checkbox{
+        font-size: 14px;
+        
+    }
+}
