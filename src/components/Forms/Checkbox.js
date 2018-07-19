@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import './Checkbox.css'
 class Checkbox extends Component {
   state = {
     isChecked: false

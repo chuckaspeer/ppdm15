@@ -10,6 +10,7 @@ JOIN doc_checks ch ON ch.id = re.doc_checks
 JOIN doc_comments co ON co.id = re.doc_comments
 JOIN students ON students.id = re.students
 JOIN staff ON staff.id = re.staff
-WHERE students.id = $1;
+WHERE students.id = $1
+ORDER BY re.id;
 
 

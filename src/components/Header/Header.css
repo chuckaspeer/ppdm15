@@ -1,23 +1,25 @@
 .Mainheader{
+
   font-size: 100%;
   background-repeat: repeat-x;
   padding: 0px;
   margin: 0px;
-  
+
 }
 
 .doc{
-padding: 10px;
+  display: flex;
+padding: 5px;
 }
 nav {
   display: flex;
-  background-color: rgb(54, 59, 122);
+  background-color: white;
   color: white;
   height: 7.5vh;
   
   justify-content: space-between;
   align-items: center;
-  padding: 0 40px;
+  padding: 0 20px;
 
  
 }
@@ -28,11 +30,32 @@ logo {
   cursor: pointer;
 }
 
-
-.links {
+.H_links {
+  display: inline-flex;
+   align-items: center;
+   margin-right: 50px;
+   text-decoration: none;
+   color:rgb(32, 119, 190);
+   font-weight: bold;
+ }
+.Hlinks {
  display: inline-flex;
   align-items: center;
   margin-right: 50px;
   text-decoration: none;
-  color: white;
+  color:rgb(32, 119, 190);
+  font-weight: bold;
+}
+
+@media(max-width:812px){
+.Hlinks {
+display:none;
+}
+
+}
+@media(max-width:812px){
+.H_links{
+  margin-right:10px;
+
+  }
 }

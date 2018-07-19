@@ -1,14 +1,23 @@
-p{
+.class_list{
     display: block;
-  padding: 1px;
-  margin: 5px auto;
-  width: 100%;
+  padding: 10px;
+  margin: 10px auto;
+  width: 80%;
 
-  background-color: rgb(54, 59, 122);
+  background-color: rgb(32, 119, 190);
 
   font-size: 25px;
   cursor: pointer;
   text-align: center;
   color: aliceblue;
-  align-items: center
+  align-items: center;
+  text-decoration: none;
+  border-radius: 12px;
+}
+.links {
+  display: block;
+  text-decoration: none;
+}
+p {
+  margin:0;
 }

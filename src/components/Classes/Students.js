@@ -33,7 +33,7 @@ class Students extends Component {
       return (
         <Link key={students.id} to={`/Ics/${students.id}`} className="links">
           <button className="student_list">
-            <li>{`${students.first_name} ${students.last_name}`}</li>
+            <p>{`${students.first_name} ${students.last_name}`}</p>
           </button>
         </Link>
       );

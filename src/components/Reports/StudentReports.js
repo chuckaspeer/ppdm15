@@ -7,11 +7,15 @@ import StudentReport from "./StudentReport/StudentReport";
 
 class StudentReports extends Component {
   componentDidMount() {
+    this.updateReports();
+  }
+
+  updateReports = () => {
     this.props.updateStudentReports(this.props.match.params.id).then(() => {
       console.log(this.props.studentReports);
       // console.log(this.props.student);
     });
-  }
+  };
 
   // edithandler = edithandler => {
   //   edithandler.preventDefault();
@@ -23,7 +27,11 @@ class StudentReports extends Component {
 
     let reportsDisplay = this.props.studentReports[0] ? (
       this.props.studentReports.map(report => (
-        <StudentReport studentId={this.props.match.params.id} report={report} />
+        <StudentReport
+          key={report.report_id}
+          update={this.updateReports}
+          report={report}
+        />
         // <div key={0} className="Mainreportdiv">
         //   <span>Student:</span>
         //   <div className="StudentNameReport">

@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
-import { updateStudentReports } from "../../../ducks/reducer";
 import "./StudentReport.css";
 import axios from "axios";
 class StudentReport extends Component {
@@ -21,7 +19,7 @@ class StudentReport extends Component {
         })
         .then(response => {
           this.setState({ comment: response.data[0].comments });
-          this.setState({ loading: true });
+          // this.setState({ loading: true });
         });
     }
 
@@ -39,10 +37,10 @@ class StudentReport extends Component {
     const { id } = this.state;
     axios
       .delete(`/api/students/${this.props.report.report_id}/reports`)
-      .then(response => {
+      .then(async response => {
         console.log(response);
         // this.setState({ reports: response.data[0].report, loading: true });
-        this.props.updateStudentReports(this.props.studentId);
+        await this.props.update();
       });
     // }
 
@@ -96,7 +94,7 @@ class StudentReport extends Component {
           {staff_first_name + " " + staff_last_name}
         </div>
 
-        <div className="edit">
+        <div className="edit_delete">
           <button onClick={this.editHandler} className="edit">
             {edit ? "save comment" : "edit comment"}
           </button>
@@ -111,7 +109,4 @@ class StudentReport extends Component {
   }
 }
 
-export default connect(
-  null,
-  { updateStudentReports }
-)(StudentReport);
+export default StudentReport;

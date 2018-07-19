@@ -92,11 +92,11 @@ class Ics extends Component {
             <form onSubmit={this.handleFormSubmit} className ="checkboxes">
               {this.createCheckboxes()}
               <Comments typed={this.onChangeHandler} />
-              <button className="btn btn-default" type="submit">
+              <button className="submit_btn" type="submit">
                 Submit
               </button>
               <Link to="/Classes" className="HSlinks">
-                <button className="back btn" type="back">
+                <button className="back_btn" type="back">
                   Back
                 </button>
               </Link>

@@ -23,7 +23,7 @@ class Classes extends Component {
     let classesDisplay = this.props.classes.map(classes => {
       return (
         <Link key={classes.id} to={`/Students/${classes.id}`} className="links">
-          <button>
+          <button className="button">
             <p>{` ${classes.class_desc}`}</p>
           </button>
         </Link>

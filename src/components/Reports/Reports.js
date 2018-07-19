@@ -22,8 +22,8 @@ class Reports extends Component {
 
         // on click, run click listener that does axios call
         <Link key={students.id} to={`/StudentReports/${students.id}`} className="links">
-        <button onClick={this.onClickListener} className="student_list">
-          <li>{`${students.first_name} ${students.last_name}`}</li>
+        <button onClick={this.onClickListener} className="button">
+          <p>{`${students.first_name} ${students.last_name}`}</p>
         </button>
         </Link>
       );
