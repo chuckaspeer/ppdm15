@@ -10,12 +10,12 @@ const cors = require("cors");
 const massive = require("massive");
 const path = require("path");
 //naming convention is important here create one for every controller
-const port = 3005;
+const port = process.env.PORT || 3005;
 const app = express();
 
 app.use(bodyParser.json());
 app.use(cors());
-// app.use(express.static(`${__dirname}/../build`));
+app.use(express.static(`${__dirname}/../build`));
 
 massive(process.env.CONNECTION_STRING)
   .then(db => {
