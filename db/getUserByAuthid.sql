@@ -1,1 +1,1 @@
-SELCET * FROM staff WHERE authid = $1;
+SELECT * FROM staff WHERE authid = $1;

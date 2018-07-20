@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import {connect} from 'react-redux';
 import {updateClasses} from '../../ducks/reducer';
 import './Classes.css';
+import Header from '../Header/Header';
 
 class Classes extends Component {
   
@@ -32,6 +33,7 @@ class Classes extends Component {
 
     return (
       <div>
+         <Header />
         <h1>Classes</h1>
         {classesDisplay}
       </div>

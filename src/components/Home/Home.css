@@ -1,0 +1,28 @@
+
+.Login-btn{
+    position: absolute;
+    right: 0;
+    padding:10px;
+    margin: 10px 40px;
+    background-attachment: fixed;
+    background-color: rgb(68, 158, 231);
+    color: aliceblue;
+    border-radius: 12px;
+    border:none;
+    font-weight: bold;
+
+
+    
+}
+
+.HomeLogo {
+    display:flex;
+    Margin: 30px; 
+   
+    margin-right:auto;
+    margin-left:auto;
+    width: 85%;
+  }
+
+
+

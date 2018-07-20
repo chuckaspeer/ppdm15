@@ -58,4 +58,21 @@ CREATE TABLE students_classes (
 )
 
 INSERT INTO students_classes (class_id, student_id)
-VALUES (1,1),(1,2),(1,3),(2,4),(2,5),(2,6),(3,7),(3,8),(3,9),(4,10),(4,11),(4,1),(4,2);
+VALUES (13,1),(13,2),(13,3),(14,4),(14,5),(14,6),(15,7),(15,8),(15,9),(16,10),(16,11),(16,1),(16,2);
+
+CREATE TABLE staff (
+	id SERIAL PRIMARY KEY,
+	first_name varchar(30) NOT NULL,
+	last_name varchar(30) NOT NULL,
+	authid varchar(100) NOT NULL,
+	email varchar(100)
+)
+
+INSERT INTO classes (class_name, class_desc, rm_number, staff_id) 
+VALUES
+	('Geometry', 'Geometry M2', 409, 1),
+	('Eng 2', 'English 2', 101, 1),
+	('Eng 1', 'English 1', 101, 1),
+	('Business Eng', 'Professional Communication 1', 101, 1);
+
+	

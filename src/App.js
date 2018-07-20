@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import "./App.css";
 import { HashRouter } from "react-router-dom";
 import routes from "./router";
-import Header from "./components/Header/Header";
+
 import store from "./store";
 import { Provider } from "react-redux";
 import Footer from "./components/Footer/Footer";
@@ -20,7 +20,7 @@ class App extends Component {
       <Provider store={store}>
         <HashRouter>
           <div>
-            <Header />
+           
             <div>{routes}</div>
             <Footer />
           </div>

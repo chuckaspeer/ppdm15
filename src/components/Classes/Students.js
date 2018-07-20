@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import "./Students.css";
 import { connect } from "react-redux";
 import { updateStudents } from "../../ducks/reducer";
+import Header from '../Header/Header'
 
 class Students extends Component {
   constructor() {
@@ -41,6 +42,7 @@ class Students extends Component {
 
     return (
       <div className="Students_div">
+      <Header />
         <h1>Students</h1>
         <h5>{this.state.className} </h5>
         {studentDisplay}

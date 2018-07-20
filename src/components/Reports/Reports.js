@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { updateReportItems, updateStudents } from "../../ducks/reducer";
+import { updateReportItems, getStudentsByStaffId } from "../../ducks/reducer";
+import Header from'../Header/Header';
 
 import {Link} from "react-router-dom";
 //import students from "./components/Classes/Students";
@@ -11,8 +12,8 @@ class Reports extends Component {
   };
 
   componentDidMount() {
-    const { updateStudents } = this.props;
-    updateStudents(this.props.match.params.id);
+    const { getStudentsByStaffId } = this.props;
+    getStudentsByStaffId();
   }
 
 
@@ -31,6 +32,7 @@ class Reports extends Component {
 
     return (
       <div>
+        <Header />
         <h1>Reports</h1>
         {studentDisplay}
       </div>
@@ -49,5 +51,5 @@ function mapStateToProps(state) {
 
 export default connect(
   mapStateToProps,
-  { updateReportItems, updateStudents }
+  { updateReportItems, getStudentsByStaffId }
 )(Reports);

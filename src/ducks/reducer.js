@@ -8,7 +8,7 @@ const initialState = {
   isChecked: "false",
   ReportItems: [{}],
   studentReports: [],
-  studentReport:[]
+  studentReport: []
 };
 
 const CLASSES = "CLASSES";
@@ -19,6 +19,7 @@ const REPORTITEMS = "REPORTITEMS";
 const ADDDOCSTODB = "ADDDOCSTODB";
 const STUDENTREPORTS = "STUDENTREPORTS";
 const STUDENTREPORT = "STUDENTREPORT";
+const STUDENTSBYSTAFF = "STUDENTSBYSTAFF";
 
 function reducer(state = initialState, action) {
   //console.log("REDUCER HIT: Action ->", action);
@@ -28,6 +29,9 @@ function reducer(state = initialState, action) {
       return Object.assign({}, state, { classes: action.payload.data });
 
     case `${STUDENTS}_FULFILLED`:
+      return Object.assign({}, state, { students: action.payload.data });
+
+    case `${STUDENTSBYSTAFF}_FULFILLED`:
       return Object.assign({}, state, { students: action.payload.data });
 
     case ISCHECKED:
@@ -41,10 +45,10 @@ function reducer(state = initialState, action) {
 
     case `${STUDENTREPORTS}_FULFILLED`:
       return Object.assign({}, state, { studentReports: action.payload.data });
-    
-      case `${STUDENTREPORT}`:
-    return Object.assign({}, state, {studentReport: action.payload.data});
-      default:
+
+    case `${STUDENTREPORT}`:
+      return Object.assign({}, state, { studentReport: action.payload.data });
+    default:
       return state;
   }
 }
@@ -60,6 +64,13 @@ export function updateStudents(id) {
   return {
     type: STUDENTS,
     payload: axios.get(`/api/classes/${id}/students`)
+  };
+}
+
+export function getStudentsByStaffId() {
+  return {
+    type: STUDENTSBYSTAFF,
+    payload: axios.get(`/api/staff/students`)
   };
 }
 
@@ -94,11 +105,11 @@ export function updateStudentReports(id) {
     payload: axios.get(`/api/reports/${id}`)
   };
 }
-  export function updateStudentReport(id) {
-    return {
-      type: STUDENTREPORT,
-      payload: axios.put(`/api/doc_comments/${id}`)
-    };
+export function updateStudentReport(id) {
+  return {
+    type: STUDENTREPORT,
+    payload: axios.put(`/api/doc_comments/${id}`)
+  };
 }
 
 export default reducer;

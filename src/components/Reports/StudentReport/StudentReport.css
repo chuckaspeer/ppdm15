@@ -1,4 +1,53 @@
-.Textfield {
-    width: 500px;
-    height: 50px;
+.Mainreportdiv {
+  position: relative;
+  border: solid 1px rgb(94, 152, 245);
+  margin: 30px;
+  box-shadow: 5px 5px rgb(222, 222, 230);
+  border-radius: 6px;
 }
+
+.edit_delete {
+  display: flex;
+  position: absolute;
+  justify-content: space-between;
+
+  margin: 3px 0 0 0;
+  right: 0;
+}
+.edit {
+  border-radius: 6px;
+  background-color: rgb(32, 119, 190);
+  color: aliceblue;
+  border: none;
+  font-weight: bold;
+  margin:2px;
+  font-size: 20px;
+}
+.delete {
+  border-radius: 6px;
+  background-color: rgb(32, 119, 190);
+  color: aliceblue;
+  border: none;
+  font-weight: bold;
+  margin:2px;
+  font-size: 20px;
+}
+
+span {
+  font-weight: bold;
+  padding: 5px;
+}
+
+.Textfield {
+  width: 500px;
+  height: 50px;
+}
+.StudentNameReport, .StudentCommentReport, .StaffReporter, .StudentCheckReport {
+    padding: 5px;
+}
+
+.CheckReport1 {
+margin: 5px 0 0 10px;;
+}
+
+

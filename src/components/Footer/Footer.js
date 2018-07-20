@@ -8,14 +8,12 @@ export default class Footer extends Component {
   render() {
     return (
       <div className="logo_CR">
-      <Link key={HomeScreen}to="/" className="HSlinks">
-            <img className="DDlogo" src={logo_DD_3} width="150" /> </Link>
+      <Link key={HomeScreen}to="/HomeScreen" className="HSlinks">
+            <img className="DDlogo" src={logo_DD_3} width="150" alt="logo" /> </Link>
           <br/>
         <span className="CR">Document Daily LLC &copy; 2018</span>
       </div>
     );
   }
 }
-{/* 
-            <button className="button">Home Screen</button>
-          */}
+

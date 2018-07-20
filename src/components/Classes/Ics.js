@@ -5,7 +5,8 @@ import { connect } from "react-redux";
 import { updateCheckedItems, updateClasses } from "../../ducks/reducer";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import './Ics.css';
+import "./Ics.css";
+import Header from "../Header/Header";
 
 class Ics extends Component {
   state = {
@@ -68,7 +69,7 @@ class Ics extends Component {
   };
 
   createCheckbox = label => (
-    <Checkbox 
+    <Checkbox
       label={label}
       handleCheckboxChange={this.toggleCheckbox}
       key={label}
@@ -85,11 +86,13 @@ class Ics extends Component {
     console.log(this.props.students);
     return (
       <div className="container">
+        {" "}
+        <Header />
         <div className="row">
           <div className="col-sm-12">
             <h1> In Class Support</h1>
             <h4>{this.state.studentName}</h4>
-            <form onSubmit={this.handleFormSubmit} className ="checkboxes">
+            <form onSubmit={this.handleFormSubmit} className="checkboxes">
               {this.createCheckboxes()}
               <Comments typed={this.onChangeHandler} />
               {/* <Link key={student} to={`/Students/${classes.id}`} className="submit"> */}

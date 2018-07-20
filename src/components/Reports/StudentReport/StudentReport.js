@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./StudentReport.css";
 import axios from "axios";
+
 class StudentReport extends Component {
   state = {
     edit: false,
@@ -34,7 +35,7 @@ class StudentReport extends Component {
     //this.props.updateStudentReport(this.props.student.id);
 
     // if (this.state.delete) {
-    const { id } = this.state;
+    // const { id } = this.state;
     axios
       .delete(`/api/students/${this.props.report.report_id}/reports`)
       .then(async response => {
@@ -64,8 +65,11 @@ class StudentReport extends Component {
       staff_last_name
     } = this.props.report;
 
+    const checksDisplay = checks.map(check => <li className="CheckReport1">{check}</li>)
+
     return (
       <div key={0} className="Mainreportdiv">
+      
         <span>Student:</span>
         <div className="StudentNameReport">
           {first_name + "  " + last_name + " "}
@@ -73,7 +77,7 @@ class StudentReport extends Component {
         <br />
         <span>In Class Support:</span>
 
-        <div className="StudentCheckReport">{checks}</div>
+        <div className="StudentCheckReport">{checksDisplay}</div>
         <br />
         <span>Comment:</span>
 

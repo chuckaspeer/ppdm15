@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./HomeScreen.css";
+import Header from'../Header/Header';
 export default class HomeScreen extends Component {
   render() {
     return (
       <div className="Mainhomescreen">
+       <Header />
         <h1>HomeScreen</h1>
         <div className="Home_Screen_links">
           {/* <Link to="/" className="HSlinks">
