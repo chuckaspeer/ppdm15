@@ -7,7 +7,7 @@ export default class Home extends Component {
   render() {
     return (
       <div>
-        <a href="http://localhost:3005/login">
+        <a href={process.env.REACT_APP_LOGIN_REDIRECT}>
           <button className="Login-btn">Login</button>{" "}
         </a>
         <div className="HomeDiv">
