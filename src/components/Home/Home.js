@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 import DD_logo from "../images/DD_logo.png";
 import "./Home.css";
 
