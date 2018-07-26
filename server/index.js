@@ -51,7 +51,7 @@ passport.use(
   )
 );
 passport.serializeUser((user, done) => {
-  console.log(user);
+  //console.log(user);
   const db = app.get("db");
   db.getUserByAuthid([user.id])
     .then(response => {
@@ -191,7 +191,7 @@ app.post("/api/students/:id/doc_comments", (req, res) => {
 });
 
 app.put("/api/students/:id/doc_comments", (req, res) => {
-  console.log("hit");
+  //console.log("hit");
   const { comment } = req.body;
   const { id } = req.params;
 
